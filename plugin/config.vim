@@ -7,12 +7,12 @@ let g:pylon_ide_config = 1
 let g:vjFileTypeList = ['php','javascript','html']
 
 func! VjFileTypeToggle()
-    let a:curFt = &filetype
-    let a:ftIndex = index(g:vjFileTypeList, a:curFt)  
-    if a:ftIndex  != -1
-        let a:nextFt=g:vjFileTypeList[( (a:ftIndex + 1) % len(g:vjFileTypeList) )]
-        exec "set ft=".a:nextFt
-        echo ':set filetype ='a:nextFt
+    let curFt = &filetype
+    let ftIndex = index(g:vjFileTypeList, curFt)  
+    if ftIndex  != -1
+        let nextFt=g:vjFileTypeList[( (ftIndex + 1) % len(g:vjFileTypeList) )]
+        exec "set ft=".nextFt
+        echo ':set filetype ='nextFt
     endif
 endfunction
 
@@ -82,9 +82,9 @@ func! VjClose()
 endf
 
 func! VjOpen()
-    let a:session_name = FindProjectName()
-    if g:vj_open_last_file_mode != 0 && a:session_name != ''
-        call RestoreSession(a:session_name)
+    let session_name = FindProjectName()
+    if g:vj_open_last_file_mode != 0 && session_name != ''
+        call RestoreSession(session_name)
     endif
     if g:vj_source_from_code_mode == 0
         NERDTreeTabsToggle
