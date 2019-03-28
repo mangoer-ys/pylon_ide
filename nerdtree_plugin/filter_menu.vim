@@ -10,17 +10,17 @@ call NERDTreeAddMenuItem({
             \'callback': 'NERDTreeFilterExtension'})
 
 function! NERDTreeFilterExtension()
-    let a:input_ext = input("Please input the extension of files, use <space> to separate, such as「js json css」: ")
-    let a:input_ext_list = split(a:input_ext)
+    let input_ext = input("Please input the extension of files, use <space> to separate, such as「js json css」: ")
+    let input_ext_list = split(input_ext)
 
-    if a:input_ext_list != []
-        let a:list = [] 
-        for a:ext in a:input_ext_list
-            let a:ext = '\.'.a:ext.'$'
-            let a:extlist = split(a:ext)
-            let a:list += a:extlist
+    if input_ext_list != []
+        let list = [] 
+        for ext in input_ext_list
+            let ext = '\.'.ext.'$'
+            let extlist = split(ext)
+            let list += extlist
         endfor
-        let g:NERDTreeIgnore = a:list
+        let g:NERDTreeIgnore = list
     else
         let g:NERDTreeIgnore = ['\~$']
     endif
