@@ -14,13 +14,12 @@ endf
 
 func! UpdatePrjTags()
     " 将 _prj/ 下 tags 结尾的文件
-    let a:tag_list=split(globpath(s:prjroot."_prj/", '*tags'), "\n")
+    let tag_list=split(globpath(s:prjroot."_prj/", '*tags'), "\n")
     set tags=
     let i=0
-    while i<len(a:tag_list)
-        if filereadable(a:tag_list[i])
-            " echo a:tag_list[i]
-            execute "set tags+=".a:tag_list[i]            
+    while i<len(tag_list)
+        if filereadable(tag_list[i])
+            execute "set tags+=".tag_list[i]            
         endif
         let i+=1
     endwhile
